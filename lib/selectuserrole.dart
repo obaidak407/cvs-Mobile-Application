@@ -8,7 +8,7 @@ class SelectUserRole extends StatelessWidget {
 
       backgroundColor: Colors.white,
       body:
-          
+          SingleChildScrollView(child:
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -69,19 +69,50 @@ class SelectUserRole extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20,),
-                InkWell(
-                  onTap: (){
+                OutlinedButton(onPressed: () => key,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.green,
 
-                  },
-                  child: Ink.image(image: AssetImage('assets/images/driver.png'),
-                    height:100 ,)
-                ),
-                SizedBox(height: 20,),
-                InkWell(
-                    onTap: (){},
-                    child: Ink.image(image: AssetImage('assets/images/driver.png'),
-                      height:100 ,)
-                )
+                      side: BorderSide(color:Colors.green,width: 1 )
+                    ),
+                    child: Padding(padding: EdgeInsets.symmetric(vertical: 3),
+                      child:
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Mechanic / Shop", style: TextStyle(
+                            fontFamily: 'Avenir Book',
+                            color: Colors.black87,
+                            fontSize: 18,
+                          )),
+                          Icon(
+                              Icons.arrow_forward
+                          )
+                        ],
+                      )),
+                      ),
+                OutlinedButton(onPressed: () => key,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.green,
+
+                      side: BorderSide(color:Colors.green,width: 1 )
+                    ),
+                    child: Padding(padding: EdgeInsets.symmetric(vertical: 3),
+                      child:
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Driver", style: TextStyle(
+                            fontFamily: 'Avenir Book',
+                            color: Colors.black87,
+                            fontSize: 18,
+                          )),
+                          Icon(
+                              Icons.arrow_forward
+                          )
+                        ],
+                      )),
+                      ),
 
 
 
@@ -93,6 +124,7 @@ class SelectUserRole extends StatelessWidget {
 
         ],
       )
+            ,)
     );
   }
 }
