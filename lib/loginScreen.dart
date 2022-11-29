@@ -4,11 +4,18 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class loginScreen extends StatelessWidget {
+class loginScreen extends StatefulWidget {
   static const String idScreen = "login";
   const loginScreen({Key? key}) : super(key: key);
 
   @override
+  State<loginScreen> createState() => _loginScreenState();
+}
+
+class _loginScreenState extends State<loginScreen> {
+  @override
+  bool isObscure = true;
+
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
 
@@ -44,12 +51,20 @@ class loginScreen extends StatelessWidget {
                   ),
                   TextFormField(
                       cursorColor: Colors.lightGreen,
-                      obscureText: true,
+                      obscureText: isObscure,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.visibility,
-                          color: Colors.green,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            // ignore: dead_code
+                            isObscure ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isObscure = !isObscure;
+                            });
+                          },
                         ),
                         labelText: 'Enter Password',
                         labelStyle: TextStyle(
