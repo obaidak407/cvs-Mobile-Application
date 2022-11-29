@@ -1,6 +1,7 @@
 import 'package:cvs_mobile_application/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
+import 'package:cvs_mobile_application/terns_condition.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "CVS Mobile Apllication",
-      home: SplashScreen(),
+      home: Terms_Condition(),
       routes: {loginScreen.idScreen: (context) => loginScreen()},
     );
   }
