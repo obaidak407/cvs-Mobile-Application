@@ -1,4 +1,6 @@
+import 'package:cvs_mobile_application/email_verification.dart';
 import 'package:cvs_mobile_application/loginScreen.dart';
+import 'package:cvs_mobile_application/mapscreen.dart';
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
 import 'package:cvs_mobile_application/terns_condition.dart';
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "CVS Mobile Apllication",
-      home: Terms_Condition(),
+      home: MapScreeen(),
       routes: {loginScreen.idScreen: (context) => loginScreen()},
     );
   }

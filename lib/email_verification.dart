@@ -80,6 +80,16 @@ class Email_Verification extends StatelessWidget {
                   )
                 ],
               ),
+              //Addd Field Boxes
+              SizedBox(
+                height: 80.0,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Image(
+                  image: AssetImage('assets/images/verifybutton.png'),
+                ),
+              ),
             ],
           ),
         ),
