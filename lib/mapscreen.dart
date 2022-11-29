@@ -63,41 +63,8 @@ class _MapScreeenState extends State<MapScreeen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(0.0),
         child: Stack(children: [
-          SizedBox(
-            height: 392,
-            width: 360,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Image(
-                      image: AssetImage('assets/images/backarrow.png'),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 17.0,
-                ),
-                TextFormField(
-                    cursorColor: Colors.lightGreen,
-                    keyboardType: TextInputType.name,
-                    decoration: InputDecoration(
-                      labelText: 'Store Name',
-                      labelStyle: TextStyle(
-                          fontSize: 14.0,
-                          fontFamily: 'Outfit',
-                          color: Colors.green),
-                      hintText: 'Search  Store ',
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color.fromRGBO(5, 129, 98, 1))),
-                      border: OutlineInputBorder(borderSide: BorderSide()),
-                    )),
-              ],
-            ),
-          ),
           GoogleMap(
             myLocationEnabled: true,
             padding: EdgeInsets.only(bottom: bottempadding),
@@ -117,6 +84,98 @@ class _MapScreeenState extends State<MapScreeen> {
                 bottempadding = 300.0;
               });
             },
+          ),
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.center,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  Color.fromRGBO(255, 255, 255, 1),
+                  Color.fromRGBO(255, 255, 255, 0)
+                ])),
+            height: 500,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(24.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Image(
+                            image: AssetImage('assets/images/backarrow.png'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 17.0,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Store ",
+                            style: TextStyle(
+                                fontFamily: 'Avenir Roman',
+                                fontSize: 32,
+                                color: Colors.black),
+                          ),
+                          Text(
+                            "Setup!",
+                            style: TextStyle(
+                                fontFamily: 'Avenir Roman',
+                                fontSize: 32,
+                                color: Color.fromRGBO(43, 147, 72, 1)),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 26,
+                      ),
+                      TextFormField(
+                          cursorColor: Colors.lightGreen,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                            labelText: 'Store Name',
+                            labelStyle: TextStyle(
+                                fontSize: 14.0,
+                                fontFamily: 'Outfit',
+                                color: Colors.green),
+                            hintText: 'Search  Store ',
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(5, 129, 98, 1))),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide()),
+                          )),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      TextFormField(
+                          cursorColor: Colors.lightGreen,
+                          keyboardType: TextInputType.name,
+                          readOnly: true,
+                          decoration: InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.my_location,
+                              color: Color.fromRGBO(5, 129, 98, 1),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.location_pin,
+                              color: Color.fromRGBO(5, 129, 98, 1),
+                            ),
+                            hintText: 'Ripple Berry',
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(5, 129, 98, 1))),
+                            border:
+                                OutlineInputBorder(borderSide: BorderSide()),
+                          )),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ]),
       ),

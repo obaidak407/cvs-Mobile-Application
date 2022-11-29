@@ -71,7 +71,7 @@ class _loginScreenState extends State<loginScreen> {
                             fontSize: 14.0,
                             fontFamily: 'Outfit',
                             color: Colors.green),
-                        hintText: 'Enter Enter Password',
+                        hintText: 'Enter Password',
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromRGBO(5, 129, 98, 1))),
