@@ -192,21 +192,22 @@ class _CreateAcountState extends State<CreateAcount> {
                           border: OutlineInputBorder(borderSide: BorderSide()),
                         )),
                     SizedBox(
-                      height: 32,
+                      height: 50,
                     ),
                     Row(
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              "Step 1/3",
-                              style: TextStyle(
-                                  fontFamily: 'Avenir Roman',
-                                  fontSize: 18,
-                                  color: Colors.grey),
-                            )
-                          ],
-                        )
+                        Image(
+                          image: AssetImage('assets/images/step1_2.png'),
+                        ),
+                        SizedBox(
+                          width: 32,
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Image(
+                            image: AssetImage('assets/images/nextbtn.png'),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(

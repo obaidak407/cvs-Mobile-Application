@@ -177,6 +177,38 @@ class _MapScreeenState extends State<MapScreeen> {
               ],
             ),
           ),
+          Positioned(
+              left: 0.0,
+              right: 0.0,
+              bottom: 0.0,
+              child: Container(
+                height: 148.0,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.center,
+                        end: Alignment.topCenter,
+                        colors: [
+                      Color.fromRGBO(255, 255, 255, 1),
+                      Color.fromRGBO(255, 255, 255, 0)
+                    ])),
+                child: Padding(
+                  padding: EdgeInsets.all(24.0),
+                  child: Row(children: [
+                    Image(
+                      image: AssetImage('assets/images/step2_2.png'),
+                    ),
+                    SizedBox(
+                      width: 60.0,
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage('assets/images/store_button.png'),
+                      ),
+                    ),
+                  ]),
+                ),
+              ))
         ]),
       ),
     );
