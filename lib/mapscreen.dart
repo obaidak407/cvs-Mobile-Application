@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cvs_mobile_application/terns_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -103,8 +104,13 @@ class _MapScreeenState extends State<MapScreeen> {
                     children: [
                       Row(
                         children: [
-                          Image(
-                            image: AssetImage('assets/images/backarrow.png'),
+                          GestureDetector(
+                            onDoubleTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Image(
+                              image: AssetImage('assets/images/backarrow.png'),
+                            ),
                           ),
                         ],
                       ),
@@ -201,7 +207,10 @@ class _MapScreeenState extends State<MapScreeen> {
                       width: 60.0,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (_) => Terms_Condition()));
+                      },
                       child: Image(
                         image: AssetImage('assets/images/store_button.png'),
                       ),
