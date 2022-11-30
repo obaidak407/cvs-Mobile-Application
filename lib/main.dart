@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "CVS Mobile Apllication",
-      home: loginScreen(),
+      home: home_screen(),
       initialRoute: loginScreen.idScreen,
       routes: {loginScreen.idScreen: (context) => loginScreen()},
     );

@@ -114,6 +114,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                   color: Color.fromRGBO(5, 129, 98, 1))),
                           border: OutlineInputBorder(borderSide: BorderSide()),
                         )),
+
                     SizedBox(
                       height: 32,
                     ),

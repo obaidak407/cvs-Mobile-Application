@@ -1,6 +1,7 @@
 import 'package:cvs_mobile_application/create_acount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
+import 'package:cvs_mobile_application/home_screen.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -119,7 +120,7 @@ class _loginScreenState extends State<loginScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const CreateAcount()));
+                                  builder: (context) => const home_screen()));
                         },
                         child: Text(
                           "Create Account",
