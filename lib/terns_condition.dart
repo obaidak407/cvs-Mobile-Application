@@ -112,7 +112,6 @@ class Terms_Condition extends StatelessWidget {
             SizedBox(height: 20),
             Align(
               child:
-
                 Image(image: AssetImage("assets/images/create_account.png"))
             )
           ],

@@ -80,10 +80,126 @@ class Email_Verification extends StatelessWidget {
                   )
                 ],
               ),
-              //Addd Field Boxes
+              //Add Field Boxes
               SizedBox(
-                height: 80.0,
+                height: 20.0,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xffF7F4F8),
+                    ),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                      maxLength: 1,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          border: InputBorder.none, counterText: ""),
+                    ),
+                  ),
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xffF7F4F8),
+                    ),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                      maxLength: 1,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          border: InputBorder.none, counterText: ""),
+                    ),
+                  ),
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xffF7F4F8),
+                    ),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                      maxLength: 1,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          border: InputBorder.none, counterText: ""),
+                    ),
+                  ),
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xffF7F4F8),
+                    ),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                      maxLength: 1,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          border: InputBorder.none, counterText: ""),
+                    ),
+                  ),
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Color(0xffF7F4F8),
+                    ),
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20),
+                      maxLength: 1,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          border: InputBorder.none, counterText: ""),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "00:53 ",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(fontSize: 16, fontFamily: "Avenir Roman"),
+                  ),
+                  Text(
+                    " Resend",
+                    textAlign: TextAlign.right,
+                    style: TextStyle( fontFamily: "Avenir Roman",
+                      fontSize: 16,
+                        color: Color(0xff80d25b)
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(
+                height: 20.0,
+              ),
+
               GestureDetector(
                 onTap: () {},
                 child: Image(

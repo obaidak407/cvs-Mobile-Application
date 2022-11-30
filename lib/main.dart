@@ -1,9 +1,9 @@
-import 'package:cvs_mobile_application/create_acount.dart';
 import 'package:cvs_mobile_application/driver_screen.dart';
-import 'package:cvs_mobile_application/email_verification.dart';
+import 'package:cvs_mobile_application/home_screen.dart';
 import 'package:cvs_mobile_application/loginScreen.dart';
-import 'package:cvs_mobile_application/mapscreen.dart';
-import 'package:cvs_mobile_application/selectuserrole.dart';
+
+import 'package:cvs_mobile_application/email_verification.dart';
+
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
 import 'package:cvs_mobile_application/terns_condition.dart';
@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "CVS Mobile Apllication",
-      home: CreateAcount(),
-      routes: {loginScreen.idScreen: (context) => loginScreen()},
+
+      home: home_screen(),
+
     );
   }
 }
