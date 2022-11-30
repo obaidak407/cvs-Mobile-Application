@@ -1,3 +1,4 @@
+import 'package:cvs_mobile_application/email_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -23,8 +24,13 @@ class Terms_Condition extends StatelessWidget {
             ),
             Row(
               children: [
-                Image(
-                  image: AssetImage('assets/images/backarrow.png'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Image(
+                    image: AssetImage('assets/images/backarrow.png'),
+                  ),
                 ),
               ],
             ),
@@ -93,11 +99,12 @@ class Terms_Condition extends StatelessWidget {
                     onChanged: (bool? value) {
                       //value returned when checkbox is clicked
                     }),
-                Text("I agree with the",
-                style: TextStyle(
-                  fontFamily: "Avenir Book",
-                  fontWeight: FontWeight.w700,
-                ),
+                Text(
+                  "I agree with the",
+                  style: TextStyle(
+                    fontFamily: "Avenir Book",
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 Text(
                   " Terms & Conditions",
@@ -111,10 +118,14 @@ class Terms_Condition extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Align(
+                child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => Email_Verification()));
+              },
               child:
-
-                Image(image: AssetImage("assets/images/create_account.png"))
-            )
+                  Image(image: AssetImage("assets/images/create_account.png")),
+            ))
           ],
         ),
       ),

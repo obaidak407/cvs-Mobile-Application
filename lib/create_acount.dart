@@ -1,8 +1,10 @@
 import 'package:cvs_mobile_application/loginScreen.dart';
+import 'package:cvs_mobile_application/mapscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CreateAcount extends StatefulWidget {
   const CreateAcount({Key? key}) : super(key: key);
@@ -28,8 +30,13 @@ class _CreateAcountState extends State<CreateAcount> {
                 GestureDetector(
                   child: Row(
                     children: [
-                      Image(
-                        image: AssetImage('assets/images/backarrow.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image(
+                          image: AssetImage('assets/images/backarrow.png'),
+                        ),
                       ),
                     ],
                   ),
@@ -110,23 +117,27 @@ class _CreateAcountState extends State<CreateAcount> {
                     SizedBox(
                       height: 32,
                     ),
-                    TextFormField(
-                        cursorColor: Colors.lightGreen,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          labelStyle: TextStyle(
-                              fontSize: 14.0,
-                              fontFamily: 'Outfit',
-                              color: Colors.green),
-                          hintText: 'Enter Phone Number',
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color.fromRGBO(5, 129, 98, 1))),
-                          border: OutlineInputBorder(borderSide: BorderSide()),
-                        )),
+                    IntlPhoneField(
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        labelStyle: TextStyle(
+                            fontSize: 14.0,
+                            fontFamily: 'Outfit',
+                            color: Colors.green),
+                        hintText: 'Enter Phone Number',
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromRGBO(5, 129, 98, 1))),
+                        border: OutlineInputBorder(borderSide: BorderSide()),
+                      ),
+                      initialCountryCode: 'IN',
+                      onChanged: (phone) {
+                        print(phone.completeNumber);
+                      },
+                    ),
                     SizedBox(
-                      height: 32,
+                      height: 18,
                     ),
                     TextFormField(
                         cursorColor: Colors.lightGreen,
@@ -203,7 +214,11 @@ class _CreateAcountState extends State<CreateAcount> {
                           width: 32,
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (_) => MapScreeen()));
+                          },
                           child: Image(
                             image: AssetImage('assets/images/nextbtn.png'),
                           ),

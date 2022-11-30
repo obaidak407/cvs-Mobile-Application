@@ -17,8 +17,13 @@ class Email_Verification extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Image(
-                    image: AssetImage('assets/images/backarrow.png'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image(
+                      image: AssetImage('assets/images/backarrow.png'),
+                    ),
                   ),
                 ],
               ),
