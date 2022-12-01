@@ -71,7 +71,7 @@ class SelectUserRole extends StatelessWidget {
                             context, loginScreen.idScreen, (route) => false);
                       },
                       child: Ink.image(
-                        image: AssetImage('assets/images/driver.png'),
+                        image: AssetImage('assets/images/mechanic_shop.png'),
                         height: 100,
                       )),
                   SizedBox(

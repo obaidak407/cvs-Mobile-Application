@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:cvs_mobile_application/email_verification.dart';
 import 'package:cvs_mobile_application/terns_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'loginScreen.dart';
 
 class MapScreeen extends StatefulWidget {
   const MapScreeen({Key? key}) : super(key: key);
@@ -13,11 +16,14 @@ class MapScreeen extends StatefulWidget {
 }
 
 class _MapScreeenState extends State<MapScreeen> {
+  TextEditingController searchController = TextEditingController();
+  TextEditingController ResultController = TextEditingController();
+
   final Completer<GoogleMapController> _controllerGooglrMap = Completer();
   late GoogleMapController newgoogleMapController;
   late Position currentPosition;
   double bottempadding = 0.0;
-
+  Set<Marker> markerSet = {};
   void locatePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -44,14 +50,26 @@ class _MapScreeenState extends State<MapScreeen> {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    currentPosition = position;
-    LatLng latLatposition = LatLng(position.latitude, position.longitude);
-    CameraPosition cameraPosition =
-        new CameraPosition(target: latLatposition, zoom: 14);
-    newgoogleMapController
-        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      LatLng latLngPosition =
+          LatLng(currentPosition.latitude, currentPosition.longitude);
+      CameraPosition cameraPosition =
+          new CameraPosition(target: latLngPosition, zoom: 14);
+      newgoogleMapController
+          .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+      setState(() {
+        markerSet.add(Marker(
+          markerId: MarkerId("myMarker"),
+          position: latLngPosition,
+          infoWindow: InfoWindow(title: "My Location"),
+          icon:
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+        ));
+      });
+    }
   }
 
   //Initial Location
@@ -77,6 +95,7 @@ class _MapScreeenState extends State<MapScreeen> {
             myLocationButtonEnabled: true,
             zoomControlsEnabled: true,
             zoomGesturesEnabled: true,
+            markers: markerSet,
             onMapCreated: (GoogleMapController Controller) {
               _controllerGooglrMap.complete(Controller);
               newgoogleMapController = Controller;
@@ -139,6 +158,8 @@ class _MapScreeenState extends State<MapScreeen> {
                         height: 26,
                       ),
                       TextFormField(
+                          onTap: () {},
+                          controller: searchController,
                           cursorColor: Colors.lightGreen,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
@@ -158,6 +179,7 @@ class _MapScreeenState extends State<MapScreeen> {
                         height: 20.0,
                       ),
                       TextFormField(
+                          controller: ResultController,
                           cursorColor: Colors.lightGreen,
                           keyboardType: TextInputType.name,
                           readOnly: true,
@@ -170,7 +192,7 @@ class _MapScreeenState extends State<MapScreeen> {
                               Icons.location_pin,
                               color: Color.fromRGBO(5, 129, 98, 1),
                             ),
-                            hintText: 'Ripple Berry',
+                            hintText: ResultController.text,
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(5, 129, 98, 1))),
@@ -208,6 +230,10 @@ class _MapScreeenState extends State<MapScreeen> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Email_Verification()));
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (_) => Terms_Condition()));
                       },

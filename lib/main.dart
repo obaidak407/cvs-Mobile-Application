@@ -3,6 +3,7 @@ import 'package:cvs_mobile_application/home_screen.dart';
 import 'package:cvs_mobile_application/loginScreen.dart';
 
 import 'package:cvs_mobile_application/email_verification.dart';
+import 'package:cvs_mobile_application/mapscreen.dart';
 
 import 'package:flutter/material.dart';
 import 'splashscreen.dart';
@@ -18,8 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "CVS Mobile Apllication",
-      home: home_screen(),
-      initialRoute: loginScreen.idScreen,
+      home: MapScreeen(),
       routes: {loginScreen.idScreen: (context) => loginScreen()},
     );
   }

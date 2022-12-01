@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cvs_mobile_application/mapscreen.dart';
 import 'package:cvs_mobile_application/selectuserrole.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => SelectUserRole()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => MapScreeen()));
     });
   }
 

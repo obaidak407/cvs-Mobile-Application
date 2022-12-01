@@ -1,9 +1,12 @@
+import 'package:cvs_mobile_application/APIs/AuthAPIs.dart';
+import 'package:cvs_mobile_application/Models/UserModel.dart';
 import 'package:cvs_mobile_application/loginScreen.dart';
 import 'package:cvs_mobile_application/mapscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CreateAcount extends StatefulWidget {
@@ -16,7 +19,12 @@ class CreateAcount extends StatefulWidget {
 class _CreateAcountState extends State<CreateAcount> {
   bool isObscure = true;
   bool isObscureC = true;
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
+  UserModel user = UserModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +90,7 @@ class _CreateAcountState extends State<CreateAcount> {
                 Column(
                   children: [
                     TextFormField(
+                        controller: nameController,
                         cursorColor: Colors.lightGreen,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -102,6 +111,7 @@ class _CreateAcountState extends State<CreateAcount> {
                     TextFormField(
                         cursorColor: Colors.lightGreen,
                         keyboardType: TextInputType.emailAddress,
+                        controller: emailController,
                         decoration: InputDecoration(
                           labelText: 'Email Address',
                           labelStyle: TextStyle(
@@ -114,12 +124,12 @@ class _CreateAcountState extends State<CreateAcount> {
                                   color: Color.fromRGBO(5, 129, 98, 1))),
                           border: OutlineInputBorder(borderSide: BorderSide()),
                         )),
-
                     SizedBox(
                       height: 32,
                     ),
                     IntlPhoneField(
                       keyboardType: TextInputType.phone,
+                      controller: phoneController,
                       decoration: InputDecoration(
                         labelText: 'Phone Number',
                         labelStyle: TextStyle(
@@ -141,6 +151,7 @@ class _CreateAcountState extends State<CreateAcount> {
                       height: 18,
                     ),
                     TextFormField(
+                        controller: passController,
                         cursorColor: Colors.lightGreen,
                         obscureText: isObscure,
                         keyboardType: TextInputType.visiblePassword,
@@ -174,6 +185,7 @@ class _CreateAcountState extends State<CreateAcount> {
                       height: 32,
                     ),
                     TextFormField(
+                        controller: confirmController,
                         cursorColor: Colors.lightGreen,
                         obscureText: isObscureC,
                         keyboardType: TextInputType.visiblePassword,
@@ -215,14 +227,42 @@ class _CreateAcountState extends State<CreateAcount> {
                           width: 32,
                         ),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (_) => MapScreeen()));
-                          },
                           child: Image(
                             image: AssetImage('assets/images/nextbtn.png'),
                           ),
+                          onTap: () {
+                            if (CheckValidations()) {
+                              user.email = emailController.text;
+                              user.fullName = nameController.text;
+                              user.phoneNo = phoneController.text;
+                              user.password = passController.text;
+                              user.shopAddressLat = '0';
+                              user.shopAddressLong = '0';
+                              user.shopName = 'City Veg Shop';
+                              user.roles_ID = '1';
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => loginScreen()));
+                              var response = AuthAPIs()
+                                  .signup('/mechanic/signup', user)
+                                  .then((value) => {
+                                        if (value['status'] == "Success")
+                                          {
+                                            Fluttertoast.showToast(
+                                                msg: value['message']),
+                                          }
+                                        else
+                                          {
+                                            Fluttertoast.showToast(
+                                                msg: value['message'])
+                                          }
+                                      })
+                                  .catchError((err) {
+                                print(err);
+                              });
+                            }
+                          },
                         ),
                       ],
                     ),
@@ -264,5 +304,32 @@ class _CreateAcountState extends State<CreateAcount> {
         ),
       ),
     );
+  }
+
+  bool CheckValidations() {
+    if (nameController.text.length < 2) {
+      Fluttertoast.showToast(msg: "Please Enter User Name");
+      return false;
+    }
+    if (emailController.text.length < 2 ||
+        !emailController.text.contains("@") ||
+        !emailController.text.endsWith(".com")) {
+      Fluttertoast.showToast(msg: "Please Enter Valid Email");
+      return false;
+    }
+    if (passController.text.length < 8) {
+      Fluttertoast.showToast(
+          msg: "Enter Password must be greater than 8 characters");
+      return false;
+    }
+    if (!confirmController.text.contains(passController.text)) {
+      Fluttertoast.showToast(msg: "Password not Matching");
+      return false;
+    }
+    if (phoneController.text.length < 10) {
+      Fluttertoast.showToast(msg: "Please Enter Valid Phone Number");
+      return false;
+    }
+    return true;
   }
 }

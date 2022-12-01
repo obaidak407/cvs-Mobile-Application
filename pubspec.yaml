@@ -39,6 +39,9 @@ dependencies:
   google_maps_flutter: ^2.1.2
   geolocator: ^8.2.0
   intl_phone_field: ^3.1.0
+  http: ^0.13.5
+  fluttertoast: ^8.1.1
+
 
 
 dev_dependencies:
@@ -70,12 +73,7 @@ flutter:
     - assets/images/backgroundbckg.png
     - assets/images/get_started.png
     - assets/images/loginbutton.png
-    - assets/images/backarrow.png
-    - assets/images/verifybutton.png
-    - assets/images/step2_2.png
-    - assets/images/store_button.png
-    - assets/images/step1_2.png
-    - assets/images/nextbtn.png
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
