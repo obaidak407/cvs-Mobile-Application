@@ -6,7 +6,8 @@
    <application
         android:label="cvs_mobile_application"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,6 +35,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
             <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBn8xL5jMHzxNDSRdCYed4NoFvgisBo3tc"/>  
+            android:value="AIzaSyDd_DAaGN6XCBtM0KPjYn1AZjhU9c2KzC4"/>  
     </application>
 </manifest>

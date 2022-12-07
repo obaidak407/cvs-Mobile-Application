@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cvsss-dev-221804-authRole",
+      "UnauthRoleArn": "arn:aws:iam::318064952660:role/amplify-cvsss-dev-221804-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::318064952660:role/amplify-cvsss-dev-221804-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cvsss-dev-221804-deployment",
+      "UnauthRoleName": "amplify-cvsss-dev-221804-unauthRole",
+      "StackName": "amplify-cvsss-dev-221804",
+      "StackId": "arn:aws:cloudformation:us-east-1:318064952660:stack/amplify-cvsss-dev-221804/f34ca810-7589-11ed-91e2-0ac64c0f9853",
+      "AmplifyAppId": "dwn796t0y784i"
+    },
+    "categories": {
+      "auth": {
+        "cvsss8228093e": {}
+      },
+      "storage": {
+        "rippleberry": {}
+      }
+    }
+  }
+}

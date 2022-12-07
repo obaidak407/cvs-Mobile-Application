@@ -1,5 +1,6 @@
 import 'package:cvs_mobile_application/APIs/AuthAPIs.dart';
 import 'package:cvs_mobile_application/Models/UserModel.dart';
+import 'package:cvs_mobile_application/driver_screen.dart';
 import 'package:cvs_mobile_application/loginScreen.dart';
 import 'package:cvs_mobile_application/mapscreen.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CreateAcount extends StatefulWidget {
-  const CreateAcount({Key? key}) : super(key: key);
+  final String? type;
+  const CreateAcount({Key? key, required this.type}) : super(key: key);
 
   @override
   State<CreateAcount> createState() => _CreateAcountState();
@@ -142,7 +144,7 @@ class _CreateAcountState extends State<CreateAcount> {
                                 color: Color.fromRGBO(5, 129, 98, 1))),
                         border: OutlineInputBorder(borderSide: BorderSide()),
                       ),
-                      initialCountryCode: 'IN',
+                      initialCountryCode: 'pk',
                       onChanged: (phone) {
                         print(phone.completeNumber);
                       },
@@ -236,31 +238,19 @@ class _CreateAcountState extends State<CreateAcount> {
                               user.fullName = nameController.text;
                               user.phoneNo = phoneController.text;
                               user.password = passController.text;
-                              user.shopAddressLat = '0';
-                              user.shopAddressLong = '0';
-                              user.shopName = 'City Veg Shop';
-                              user.roles_ID = '1';
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => loginScreen()));
-                              var response = AuthAPIs()
-                                  .signup('/mechanic/signup', user)
-                                  .then((value) => {
-                                        if (value['status'] == "Success")
-                                          {
-                                            Fluttertoast.showToast(
-                                                msg: value['message']),
-                                          }
-                                        else
-                                          {
-                                            Fluttertoast.showToast(
-                                                msg: value['message'])
-                                          }
-                                      })
-                                  .catchError((err) {
-                                print(err);
-                              });
+                              if (widget.type == 'driver') {
+                                user.roles_ID = '1';
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DriverScreen()));
+                              } else {
+                                user.roles_ID = '2';
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DriverScreen()));
+                              }
                             }
                           },
                         ),

@@ -11,7 +11,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class loginScreen extends StatefulWidget {
   static const String idScreen = "login";
-  const loginScreen({Key? key}) : super(key: key);
+  final String? type;
+  const loginScreen({Key? key, required this.type}) : super(key: key);
 
   @override
   State<loginScreen> createState() => _loginScreenState();
@@ -157,7 +158,9 @@ class _loginScreenState extends State<loginScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const CreateAcount()));
+                                  builder: (context) => CreateAcount(
+                                        type: widget.type,
+                                      )));
                         },
                         child: Text(
                           "Create Account",

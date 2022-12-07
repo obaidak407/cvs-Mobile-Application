@@ -1,5 +1,7 @@
+// ignore: file_names
 import 'dart:convert';
-import 'package:cvs_mobile_application/Config.dart';
+import 'dart:io';
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:http/http.dart' as http;
 
 const String baseUrl = 'https://cash-vs-scrap-backend.herokuapp.com/api';
@@ -25,5 +27,22 @@ class AuthAPIs {
       print(e);
     });
     return json.decode(response.body);
+  }
+
+  Future<String> uploadImage(File image) async {
+    // Upload the file to S3
+    try {
+      final UploadFileResult result = await Amplify.Storage.uploadFile(
+          local: image,
+          key: 'ExampleKey',
+          onProgress: (progress) {
+            safePrint('Fraction completed: ${progress.getFractionCompleted()}');
+          });
+      safePrint('Successfully uploaded file: ${result.key}');
+      return result.key;
+    } on StorageException catch (e) {
+      safePrint('Error uploading file: $e');
+      return e.message;
+    }
   }
 }

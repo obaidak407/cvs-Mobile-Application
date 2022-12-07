@@ -67,8 +67,12 @@ class SelectUserRole extends StatelessWidget {
                   ),
                   InkWell(
                       onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, loginScreen.idScreen, (route) => false);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const loginScreen(
+                                      type: 'machanic',
+                                    )));
                       },
                       child: Ink.image(
                         image: AssetImage('assets/images/mechanic_shop.png'),
@@ -78,7 +82,14 @@ class SelectUserRole extends StatelessWidget {
                     height: 20,
                   ),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const loginScreen(
+                                      type: 'driver',
+                                    )));
+                      },
                       child: Ink.image(
                         image: AssetImage('assets/images/driver.png'),
                         height: 100,
